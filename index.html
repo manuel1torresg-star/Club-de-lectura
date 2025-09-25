@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#0066ff">
+  <title>Club de Lectura — PWA</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Club de Lectura">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+  <style>
+    /* quick toolbar safe-area for iPhones */
+    body { padding-bottom: env(safe-area-inset-bottom); }
+    /* small tweak for install banner area */
+    .install-banner { display:none; position:fixed; left:12px; right:12px; bottom:18px; z-index:1200; }
+    .install-banner.show { display:flex; gap:8px; align-items:center; justify-content:space-between; }
+    .install-banner button { padding:10px 14px; border-radius:10px; border:0; cursor:pointer; background:var(--accent); color:white; font-weight:600;}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <h1 class="logo">Club de lectura</h1>
+      <div class="controls" role="search">
+        <label class="sr-only" for="search">Buscar</label>
+        <input id="search" type="search" placeholder="Buscar..." aria-label="Buscar elementos del menú" />
+        <button id="theme-toggle" aria-pressed="false" title="Cambiar tema">🌗</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" id="main" tabindex="-1">
+    <!-- Menú principal -->
+    <nav id="main-menu" class="menu-container" aria-label="Menú principal">
+      <!-- Cada .card es fácil de duplicar / editar -->
+      <a href="#cursos-content" class="hexagon-btn card" data-target="cursos-content" role="button" aria-controls="cursos-content">
+        <div class="hexagon">
+          <img loading="lazy" src="icons/icon-192.png" alt="Icono Cursos" />
+        </div>
+        <div class="title-banner">Libros leidos</div>
+      </a>
+
+      <a href="#sigaf-content" class="hexagon-btn card" data-target="sigaf-content" role="button" aria-controls="sigaf-content">
+        <div class="hexagon">
+          <img loading="lazy" src="icons/icon-192.png" alt="Icono SIGAF" />
+        </div>
+        <div class="title-banner">Libros por leer</div>
+      </a>
+
+      <a href="#sua-mooc-content" class="hexagon-btn card" data-target="sua-mooc-content" role="button" aria-controls="sua-mooc-content">
+        <div class="hexagon">
+          <img loading="lazy" src="icons/icon-192.png" alt="Icono SUA MOOC" />
+        </div>
+        <div class="title-banner">Debate de libros</div>
+      </a>
+    </nav>
+
+    <!-- Contenedor de contenido; por defecto escondido -->
+    <section id="content-container" class="content-panel" aria-live="polite">
+      <button class="back-btn" aria-label="Volver al menú">← Volver</button>
+
+      <article id="cursos-content" class="content-section" aria-labelledby="cursos-title">
+        <h2 id="cursos-title">Libros leidos</h2>
+        <ul class="resource-list">
+          <li><a href="https://drive.google.com/file/d/1YPbCy-ciTrWiKKpbjCCWrXFfsIEJicdE/view?usp=sharing" target="_blank" rel="noopener">Libro La paciente silenciosa - Alex Michaelides</a></li>
+        </ul>
+      </article>
+
+      <article id="sigaf-content" class="content-section" aria-labelledby="sigaf-title">
+        <h2 id="sigaf-title">Libros por leer</h2>
+        <ul class="resource-list">
+          <li><a href="https://drive.google.com/file/d/1YPbCy-ciTrWiKKpbjCCWrXFfsIEJicdE/view?usp=sharing" target="_blank" rel="noopener">Libro La paciente silenciosa - Alex Michaelides</a></li>
+        </ul>
+      </article>
+
+      <article id="sua-mooc-content" class="content-section" aria-labelledby="sua-title">
+        <h2 id="sua-title">Debate libros</h2>
+        <ul class="resource-list">
+          <li><a href="https://drive.google.com/file/d/1YPbCy-ciTrWiKKpbjCCWrXFfsIEJicdE/view?usp=sharing" target="_blank" rel="noopener">Libro La paciente silenciosa - Alex Michaelides</a></li>
+        </ul>
+      </article>
+    </section>
+  </main>
+
+  <div class="install-banner" id="install-banner" role="dialog" aria-live="polite">
+    <div>Instala la app para acceso rápido</div>
+    <div>
+      <button id="install-btn">Instalar</button>
+      <button id="dismiss-install" aria-label="Cerrar">✕</button>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <small>Diseñado por Manuel Torres</small>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
